@@ -1,8 +1,8 @@
 {
-  "vendor": "vtex",
-  "name": "store-components",
-  "version": "3.155.3",
-  "title": "VTEX Store Components",
+  "vendor": "glamit",
+  "name": "vtex-custom-components",
+  "version": "1.0.0",
+  "title": "VTEX Custom Components by Mati",
   "defaultLocale": "pt-BR",
   "description": "The VTEX store components for that render apps can use",
   "builders": {
@@ -11,7 +11,7 @@
     "messages": "1.x",
     "docs": "0.x"
   },
-  "mustUpdateAt": "2019-04-02",
+  "mustUpdateAt": "2021-11-03",
   "dependencies": {
     "vtex.address-form": "4.x",
     "vtex.apps-graphql": "2.x",
