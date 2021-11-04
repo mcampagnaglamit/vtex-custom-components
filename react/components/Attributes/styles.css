@@ -1,0 +1,21 @@
+.AttributesContainer {
+    border: 1px solid gray;
+    border-radius: 5px;
+    list-style: none;
+    padding: 10px;
+}
+.AttributesItem {
+    margin-bottom: 10px;
+    font-size: 13px;
+}
+.AttributesButton {
+    background: black;
+    display: inline-flex;
+    color: white;
+    padding: 20px 20px;
+    border-radius: 100px;
+    text-decoration: none;
+}
+.AttributesButton:hover {
+    opacity: .7;
+}

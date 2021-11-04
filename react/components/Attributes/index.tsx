@@ -1,33 +1,54 @@
 import React, { useMemo, useContext, Fragment } from 'react';
 import {ProductContext} from 'vtex.product-context';
+import styles from './styles.css';
 
 interface propsI {
-    isShow: boolean
+    isShow:     boolean,
+    showName:   boolean,
+    showDesc:   boolean,
+    showPrice:  boolean,
+    showLink:   boolean
 }
 
 const Attributes = (props:propsI)=> {
-    const context = useContext(ProductContext)
+    const { product } = useContext(ProductContext)
     const isShow = props.isShow
-    const {productName, description, link} = context.product;
-    const price = context.product.priceRange.listPrice ? context.product.priceRange.listPrice.highPrice ? context.product.priceRange.listPrice.highPrice : 'Sin precio' : 'Sin precio';
+    const {productName, description, link} = product;
+    const price = product.priceRange.listPrice ? product.priceRange.listPrice.highPrice ? product.priceRange.listPrice.highPrice : 'Sin precio' : 'Sin precio';
 
-    console.log(":::::::")
-    console.log(props)
-    return(
-        <>
-            {   
-                isShow ?
-                    <ul>
-                        <li><b>Nombre:</b> {productName}</li>
-                        <li><b>Descripcion:</b> {description}</li>
-                        <li><b>Precio:</b> {price} </li>
-                        <li><a href={link}>Link a producto</a></li>
-                    </ul>
-                : 
-                    <Fragment />
-            }
-        </>
-    )
+    console.log(product)
+    
+    return useMemo(()=>{        
+        return(
+            <>
+                {   
+                    isShow ?
+                        <ul className={styles.AttributesContainer}>
+                            { props.showName? 
+                                <li className={styles.AttributesItem}><b>Nombre:</b> {productName}</li> 
+                              : <Fragment /> 
+                            }
+                            { props.showDesc? 
+                                <li className={styles.AttributesItem}><b>Descripcion:</b> {description}</li> 
+                              : <Fragment /> 
+                            }
+                            { props.showPrice? 
+                                <li className={styles.AttributesItem}><b>Precio:</b> {price} </li> 
+                              : <Fragment /> 
+                            }
+                            { props.showLink? 
+                                <li className={styles.AttributesItem}>
+                                    <a className={styles.AttributesButton} href={link}>Link a producto</a>
+                                </li> 
+                              : <Fragment /> 
+                            }
+                        </ul>
+                    : 
+                        <Fragment />
+                }
+            </>
+        )
+    }, [props])
 }
 
 // Schema
@@ -36,16 +57,40 @@ Attributes.schema = {
     type: "object",
     properties:{
         isShow:{
-            "title": "Mostrar componente?",
-            "type": "boolean",
-            "default": true
+            title: "Mostrar componente?",
+            type: "boolean",
+            default: true
+        },
+        showName: {
+            title: "Mostrar nombre?",
+            type: "boolean",
+            default: true
+        },
+        showDesc: {
+            title: "Mostrar descripción?",
+            type: "boolean",
+            default: true
+        },
+        showPrice: {
+            title: "Mostrar precio?",
+            type: "boolean",
+            default: true
+        },
+        showLink: {
+            title: "Mostrar link?",
+            type: "boolean",
+            default: true
         }
     }
 }
 
 // Default props
 Attributes.defaultProps = {
-    isShow: true
+    isShow:     true,
+    showName:   true,
+    showDesc:   true,
+    showPrice:  true,
+    showLink:   true
 }
 
 export default Attributes;
