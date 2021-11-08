@@ -14,9 +14,10 @@ const Attributes = (props:propsI)=> {
     const { product } = useContext(ProductContext)
     const isShow = props.isShow
     const {productName, description, link} = product;
-    const price = product.priceRange.listPrice ? product.priceRange.listPrice.highPrice ? product.priceRange.listPrice.highPrice : 'Sin precio' : 'Sin precio';
-
-    console.log(product)
+    const listPrice    = product.priceRange?.listPrice?.highPrice;
+    const sellingPrice = product.priceRange?.sellingPrice?.highPrice;
+    const price = sellingPrice ? sellingPrice : listPrice;
+    
     
     return useMemo(()=>{        
         return(
