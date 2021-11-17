@@ -1,5 +1,8 @@
 {
   "glamit-attributes":{
     "component": "Attributes"
+  },
+  "glamit-video-custom":{
+    "component": "VideoCustom"
   }
 }

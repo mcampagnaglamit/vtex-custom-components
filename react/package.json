@@ -9,6 +9,7 @@
   "devDependencies": {
     "@types/node": "^16.11.6",
     "@types/react": "^17.0.34",
+    "react-youtube": "^7.13.1",
     "tslib": "^2.3.1"
   }
 }
